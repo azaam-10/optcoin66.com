@@ -38,7 +38,8 @@ const App: React.FC = () => {
         {lang === Language.AR ? 'FR' : 'AR'}
       </button>
 
-      <div className={`flex-1 overflow-y-auto pb-24 px-4 pt-6 space-y-6 transition-all duration-700 ${isModalOpen ? 'opacity-40 blur-[1px] pointer-events-none' : 'opacity-100 blur-0'}`}>
+      {/* Increased blur from 1px to 8px and lowered opacity for stronger focus on modal */}
+      <div className={`flex-1 overflow-y-auto pb-24 px-4 pt-6 space-y-6 transition-all duration-700 ${isModalOpen ? 'opacity-30 blur-[6px] pointer-events-none' : 'opacity-100 blur-0'}`}>
         <Header t={t} />
         <BalanceSection t={t} />
         <ActionButtons t={t} />
