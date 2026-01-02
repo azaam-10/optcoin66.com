@@ -97,8 +97,8 @@ const MultiStepModal: React.FC<MultiStepModalProps> = ({ isOpen }) => {
 
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-6">
-      {/* خلفية معتمة خفيفة بدون إمكانية إغلاق */}
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]"></div>
+      {/* خلفية معتمة خفيفة مع إزالة الضبابية تماماً من هنا والاعتماد على خلفية التطبيق */}
+      <div className="absolute inset-0 bg-black/40"></div>
       
       {/* نافذة الحوار */}
       <div className="relative w-full max-w-[340px] bg-[#1e2329] border border-[#2b2f36] rounded-2xl p-6 shadow-2xl text-white">

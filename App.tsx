@@ -33,8 +33,8 @@ const App: React.FC = () => {
         {lang === Language.AR ? 'FR' : 'AR'}
       </button>
 
-      {/* تخفيف الضبابية من blur-[6px] إلى blur-[2px] وزيادة الوضوح من opacity-30 إلى opacity-60 */}
-      <div className={`flex-1 overflow-y-auto pb-24 px-4 pt-6 space-y-6 transition-all duration-300 ${isModalOpen ? 'opacity-60 blur-[2px] pointer-events-none' : 'opacity-100 blur-0'}`}>
+      {/* تم تخفيف الضبابية إلى blur-[1px] وزيادة الوضوح إلى opacity-80 */}
+      <div className={`flex-1 overflow-y-auto pb-24 px-4 pt-6 space-y-6 transition-all duration-300 ${isModalOpen ? 'opacity-80 blur-[1px] pointer-events-none' : 'opacity-100 blur-0'}`}>
         <Header t={t} />
         <BalanceSection t={t} />
         <ActionButtons t={t} />
