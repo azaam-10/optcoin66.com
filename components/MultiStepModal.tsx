@@ -97,10 +97,7 @@ const MultiStepModal: React.FC<MultiStepModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-6">
-      {/* Backdrop - reduced blur to 2px */}
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" onClick={() => step < 4 && onClose()}></div>
-      
-      {/* Dialog */}
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]" onClick={() => step < 4 && onClose()}></div>
       <div className="relative w-full max-w-[340px] bg-[#1e2329] border border-[#2b2f36] rounded-2xl p-6 shadow-2xl text-white">
         {renderStep()}
       </div>
