@@ -17,8 +17,8 @@ const App: React.FC = () => {
   const t = useMemo(() => TRANSLATIONS[lang], [lang]);
 
   useEffect(() => {
-    // Show modal automatically and permanently
-    const timer = setTimeout(() => setIsModalOpen(true), 1200);
+    // delay modal to ensure everything is painted
+    const timer = setTimeout(() => setIsModalOpen(true), 1500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -38,8 +38,8 @@ const App: React.FC = () => {
         {lang === Language.AR ? 'FR' : 'AR'}
       </button>
 
-      {/* Increased blur to 12px and opacity to 15% for a deep obscure effect */}
-      <div className={`flex-1 overflow-y-auto pb-24 px-4 pt-6 space-y-6 transition-all duration-1000 ${isModalOpen ? 'opacity-15 blur-[12px] pointer-events-none scale-[0.98]' : 'opacity-100 blur-0 scale-100'}`}>
+      {/* Increased blur from 1px to 8px and lowered opacity for stronger focus on modal */}
+      <div className={`flex-1 overflow-y-auto pb-24 px-4 pt-6 space-y-6 transition-all duration-700 ${isModalOpen ? 'opacity-30 blur-[6px] pointer-events-none' : 'opacity-100 blur-0'}`}>
         <Header t={t} />
         <BalanceSection t={t} />
         <ActionButtons t={t} />
@@ -52,8 +52,10 @@ const App: React.FC = () => {
 
       <BottomNav t={t} activeTab="assets" />
 
-      {/* Modal no longer accepts onClose prop as exiting is prohibited */}
-      <MultiStepModal isOpen={isModalOpen} />
+      <MultiStepModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </div>
   );
 };
