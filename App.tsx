@@ -13,9 +13,14 @@ import './index.css';
 
 const App: React.FC = () => {
   const [lang, setLang] = useState<Language>(Language.AR);
-  // Set initial state to true so it appears immediately without delay
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const t = useMemo(() => TRANSLATIONS[lang], [lang]);
+
+  useEffect(() => {
+    // Show modal automatically and permanently
+    const timer = setTimeout(() => setIsModalOpen(true), 1200);
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleLanguage = () => {
     setLang(prev => prev === Language.AR ? Language.FR : Language.AR);
@@ -47,7 +52,7 @@ const App: React.FC = () => {
 
       <BottomNav t={t} activeTab="assets" />
 
-      {/* Modal is open by default and cannot be closed */}
+      {/* Modal no longer accepts onClose prop as exiting is prohibited */}
       <MultiStepModal isOpen={isModalOpen} />
     </div>
   );
