@@ -1,11 +1,23 @@
-<div align="center">
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+# Pixel-Perfect Assets Dashboard Clone
 
-  <h1>Built with AI Studio</h2>
+هذا المشروع هو نسخة متطابقة 1:1 لصفحة نظرة عامة على الأصول، مصمم خصيصاً للهواتف المحمولة ويدعم اللغتين العربية (RTL) والفرنسية (LTR).
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## المميزات
+- **تصميم متجاوب**: متوافق تماماً مع شاشات الهواتف (Mobile-First).
+- **دعم اللغات**: تبديل فوري بين العربية والفرنسية مع تغيير اتجاه الصفحة.
+- **واجهة مستخدم احترافية**: استخدام Tailwind CSS لمحاكاة أدق التفاصيل.
+- **نظام الخطوات**: Modal متعدد الخطوات لعملية التفعيل.
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## كيفية النشر على Vercel
+1. قم بإنشاء مستودع جديد على GitHub.
+2. ارفع ملفات المشروع للمستودع.
+3. اذهب إلى [Vercel Dashboard](https://vercel.com/dashboard).
+4. اضغط على `Import` للمستودع الخاص بك.
+5. سيقوم Vercel تلقائياً بضبط الإعدادات، اضغط `Deploy`.
 
-</div>
+## التقنيات المستخدمة
+- React 19 (عبر ESM)
+- Tailwind CSS
+- Lucide Icons / SVG Custom Icons
+- Vercel Static Hosting

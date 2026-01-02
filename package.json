@@ -1,0 +1,19 @@
+
+{
+  "name": "pixel-perfect-assets-clone",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A pixel-perfect mobile-first assets dashboard clone for Arabic and French languages.",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "react",
+    "tailwind",
+    "dashboard",
+    "crypto",
+    "rtl"
+  ],
+  "author": "Senior Frontend Engineer",
+  "license": "MIT"
+}
