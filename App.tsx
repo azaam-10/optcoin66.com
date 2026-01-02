@@ -1,5 +1,5 @@
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Language } from './types';
 import { TRANSLATIONS } from './constants';
 import Header from './components/Header';
@@ -12,8 +12,14 @@ import MultiStepModal from './components/MultiStepModal';
 
 const App: React.FC = () => {
   const [lang, setLang] = useState<Language>(Language.AR);
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const t = useMemo(() => TRANSLATIONS[lang], [lang]);
+
+  useEffect(() => {
+    // Show modal after a brief delay to ensure app is rendered
+    const timer = setTimeout(() => setIsModalOpen(true), 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleLanguage = () => {
     setLang(prev => prev === Language.AR ? Language.FR : Language.AR);
@@ -31,7 +37,8 @@ const App: React.FC = () => {
         {lang === Language.AR ? 'FR' : 'AR'}
       </button>
 
-      <div className={`flex-1 overflow-y-auto pb-24 px-4 pt-6 space-y-6 transition-all duration-300 ${isModalOpen ? 'blur-[1px] pointer-events-none' : ''}`}>
+      {/* Removed blur class to prevent "dimmed/fuzzy" look that might be confusing */}
+      <div className={`flex-1 overflow-y-auto pb-24 px-4 pt-6 space-y-6 transition-all duration-300 ${isModalOpen ? 'opacity-40 pointer-events-none' : 'opacity-100'}`}>
         <Header t={t} />
         <BalanceSection t={t} />
         <ActionButtons t={t} />

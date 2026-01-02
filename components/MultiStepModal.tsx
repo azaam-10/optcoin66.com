@@ -97,8 +97,22 @@ const MultiStepModal: React.FC<MultiStepModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-6">
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]" onClick={() => step < 4 && onClose()}></div>
+      {/* Backdrop - lighter and no blur to ensure visibility */}
+      <div className="absolute inset-0 bg-black/40" onClick={() => step < 4 && onClose()}></div>
+      
+      {/* Dialog */}
       <div className="relative w-full max-w-[340px] bg-[#1e2329] border border-[#2b2f36] rounded-2xl p-6 shadow-2xl text-white">
+        {step < 4 && (
+          <button 
+            onClick={onClose}
+            className="absolute top-3 left-3 text-[#848e9c] hover:text-white"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        )}
         {renderStep()}
       </div>
     </div>
