@@ -9,6 +9,7 @@ import AccountTabs from './components/AccountTabs';
 import AssetList from './components/AssetList';
 import BottomNav from './components/BottomNav';
 import MultiStepModal from './components/MultiStepModal';
+import './index.css'; // Assume base styles are here
 
 const App: React.FC = () => {
   const [lang, setLang] = useState<Language>(Language.AR);
@@ -16,8 +17,8 @@ const App: React.FC = () => {
   const t = useMemo(() => TRANSLATIONS[lang], [lang]);
 
   useEffect(() => {
-    // Show modal after a brief delay to ensure app is rendered
-    const timer = setTimeout(() => setIsModalOpen(true), 1000);
+    // Small delay to ensure smooth transition
+    const timer = setTimeout(() => setIsModalOpen(true), 800);
     return () => clearTimeout(timer);
   }, []);
 
@@ -37,8 +38,7 @@ const App: React.FC = () => {
         {lang === Language.AR ? 'FR' : 'AR'}
       </button>
 
-      {/* Removed blur class to prevent "dimmed/fuzzy" look that might be confusing */}
-      <div className={`flex-1 overflow-y-auto pb-24 px-4 pt-6 space-y-6 transition-all duration-300 ${isModalOpen ? 'opacity-40 pointer-events-none' : 'opacity-100'}`}>
+      <div className={`flex-1 overflow-y-auto pb-24 px-4 pt-6 space-y-6 transition-opacity duration-500 ${isModalOpen ? 'opacity-30 pointer-events-none' : 'opacity-100'}`}>
         <Header t={t} />
         <BalanceSection t={t} />
         <ActionButtons t={t} />
