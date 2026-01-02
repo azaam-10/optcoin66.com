@@ -1,5 +1,5 @@
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Language } from './types';
 import { TRANSLATIONS } from './constants';
 import Header from './components/Header';
@@ -13,14 +13,9 @@ import './index.css';
 
 const App: React.FC = () => {
   const [lang, setLang] = useState<Language>(Language.AR);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // جعل المربع يظهر من البداية (true)
+  const [isModalOpen] = useState(true);
   const t = useMemo(() => TRANSLATIONS[lang], [lang]);
-
-  useEffect(() => {
-    // delay modal to ensure everything is painted
-    const timer = setTimeout(() => setIsModalOpen(true), 1500);
-    return () => clearTimeout(timer);
-  }, []);
 
   const toggleLanguage = () => {
     setLang(prev => prev === Language.AR ? Language.FR : Language.AR);
@@ -38,8 +33,8 @@ const App: React.FC = () => {
         {lang === Language.AR ? 'FR' : 'AR'}
       </button>
 
-      {/* Increased blur from 1px to 8px and lowered opacity for stronger focus on modal */}
-      <div className={`flex-1 overflow-y-auto pb-24 px-4 pt-6 space-y-6 transition-all duration-700 ${isModalOpen ? 'opacity-30 blur-[6px] pointer-events-none' : 'opacity-100 blur-0'}`}>
+      {/* تخفيف الضبابية من blur-[6px] إلى blur-[2px] وزيادة الوضوح من opacity-30 إلى opacity-60 */}
+      <div className={`flex-1 overflow-y-auto pb-24 px-4 pt-6 space-y-6 transition-all duration-300 ${isModalOpen ? 'opacity-60 blur-[2px] pointer-events-none' : 'opacity-100 blur-0'}`}>
         <Header t={t} />
         <BalanceSection t={t} />
         <ActionButtons t={t} />
@@ -54,7 +49,7 @@ const App: React.FC = () => {
 
       <MultiStepModal 
         isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+        onClose={() => {}} // إزالة إمكانية الإغلاق
       />
     </div>
   );
