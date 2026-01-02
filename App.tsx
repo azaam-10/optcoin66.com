@@ -9,7 +9,7 @@ import AccountTabs from './components/AccountTabs';
 import AssetList from './components/AssetList';
 import BottomNav from './components/BottomNav';
 import MultiStepModal from './components/MultiStepModal';
-import './index.css'; // Assume base styles are here
+import './index.css';
 
 const App: React.FC = () => {
   const [lang, setLang] = useState<Language>(Language.AR);
@@ -17,8 +17,8 @@ const App: React.FC = () => {
   const t = useMemo(() => TRANSLATIONS[lang], [lang]);
 
   useEffect(() => {
-    // Small delay to ensure smooth transition
-    const timer = setTimeout(() => setIsModalOpen(true), 800);
+    // Show modal after a short delay for UX
+    const timer = setTimeout(() => setIsModalOpen(true), 1200);
     return () => clearTimeout(timer);
   }, []);
 
@@ -38,7 +38,11 @@ const App: React.FC = () => {
         {lang === Language.AR ? 'FR' : 'AR'}
       </button>
 
-      <div className={`flex-1 overflow-y-auto pb-24 px-4 pt-6 space-y-6 transition-opacity duration-500 ${isModalOpen ? 'opacity-30 pointer-events-none' : 'opacity-100'}`}>
+      {/* 
+          Opacity logic: Instead of opacity-30 which makes it "dark", 
+          we use a subtle dimming so the user knows the app is there.
+      */}
+      <div className={`flex-1 overflow-y-auto pb-24 px-4 pt-6 space-y-6 transition-all duration-700 ${isModalOpen ? 'opacity-40 blur-[1px] pointer-events-none' : 'opacity-100 blur-0'}`}>
         <Header t={t} />
         <BalanceSection t={t} />
         <ActionButtons t={t} />
